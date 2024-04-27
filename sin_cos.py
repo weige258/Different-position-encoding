@@ -7,6 +7,6 @@ def positional_encoding(tensor):
     div_term = torch.exp(torch.arange(0, tensor.size()[1],2,device=device) * (-math.log(10000.0)/tensor.size()[1]))
     pe[:, 0::2] = torch.sin(pos_index.unsqueeze(-1) / div_term)
     pe[:, 1::2] = torch.cos(pos_index.unsqueeze(-1) / div_term)
-    tensor=tensor.to(dtype=torch.float)+pe
+    tensor=tensor.to(dtype=torch.float)+pe/10
     return tensor
 
